@@ -11,4 +11,8 @@ Rails.application.routes.draw do
       resources :applies
     end
   end
+
+  # Маршрут-ловушка для любых путей, которые не подошли под правила выше
+  # *unmatched забирает в себя любой кривой URL, а via: :all означает, что ловим все типы запросов (GET, POST и т.д.)
+  match '*unmatched', to: 'application#not_found_method', via: :all
 end
