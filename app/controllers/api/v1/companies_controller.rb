@@ -41,6 +41,25 @@ class Api::V1::CompaniesController < ApplicationController
     head :no_content
   end
 
+  # PUT DELETE (мягкое удаление)
+  def mark_deleted
+    company = Company.find(params[:id])
+
+    if company.deleted
+        render json: { 
+        deleted_company: [],
+        deleted_already: :not_modified
+        }
+    else
+        company.delete_company
+        render json: { 
+        deleted_company: company,
+        code: 200,
+        status: :success
+        }, except: [:created_at, :updated_at]
+    end
+    end
+
   private
 
   # Strong Parameters для компании

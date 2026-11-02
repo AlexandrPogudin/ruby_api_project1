@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       resources :jobs
       resources :geeks
       resources :applies
+
+      # Маршрут для мягкого удаления по ID
+      match '/:id/mark_deleted', to: 'companies#mark_deleted', via: :put
     end
   end
 
