@@ -18,7 +18,7 @@
 # Проверка на активность подключения у БД
 # ActiveRecord::Base.connection.execute("SELECT 1")
 # ActiveRecord::Base.connection.active?
-# 
+# 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
 
 
 default: &default
