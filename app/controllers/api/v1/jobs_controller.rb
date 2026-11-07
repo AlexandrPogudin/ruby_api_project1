@@ -1,10 +1,15 @@
 class Api::V1::JobsController < ApplicationController
   # GET /api/v1/jobs
   def index
-    jobs = Job.all
+    if params[:company_id]
+      company = Company.find(params[:company_id])
+      jobs = company.jobs
+    else
+      jobs = Job.all
+    end
+
     render json: jobs
   end
-
   # GET /api/v1/jobs/:id
   def show
     job = Job.find(params[:id])

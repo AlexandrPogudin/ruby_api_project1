@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Команда resources автоматически создает все RESTful маршруты:
       # index, show, create, update, destroy
-      resources :companies
+      resources :companies do
+        resources :jobs, only: [:index]
+      end
+
       resources :jobs
       resources :geeks
       resources :applies
